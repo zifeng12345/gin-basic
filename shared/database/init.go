@@ -1,7 +1,7 @@
 package database
 
 import (
-	"fmt"
+	"nwd/shared/log"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -18,7 +18,7 @@ func Init(dsn string) {
 
 	conn.db = db
 
-	fmt.Println("Mysql DB connected")
+	log.GetLog().Info("", "Mysql DB connected")
 }
 
 type IConnection interface {

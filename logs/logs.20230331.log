@@ -1,12 +1,6 @@
 0331 170209.834 [INFO] [fn:config.logInit] Service start! NR 
 
-0331 170238.156 [INFO] [fn:users.Login] user  jack login success
+0331 173356.618 [INFO] [fn:config.logInit] Service start! NR 
 
-0331 170310.707 [ERRO] [fn:users.Login] User Login failed, error:record not found
-
-0331 170310.707 [INFO] [fn:users.Login] user  jack login success
-
-0331 170406.617 [INFO] [fn:config.logInit] Service start! NR 
-
-0331 170409.841 [ERRO] [fn:users.Login] User Login failed, error:record not found
+0331 173356.619 [ERRO] [fn:redis.Init] Main redis conect success
 

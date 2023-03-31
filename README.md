@@ -56,4 +56,5 @@ Listening port is 8000
 - Gin
 - JWT
 - Graceful Exit
-- log
+- Log
+- Redis

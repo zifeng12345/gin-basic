@@ -8,10 +8,12 @@ import (
 type Config struct {
 	Mysql  *mysql  `json:"mysql"`
 	Server *server `json:"server"`
+	Redis  *redis  `json:"redis"`
 }
 
 type IConfig interface {
 	GetMysqlConf() string
+	GetRedisConf() *redis
 }
 
 type mysql struct {
@@ -30,6 +32,13 @@ type server struct {
 	LogRotate int    `json:"logRotate"`
 }
 
+type redis struct {
+	Host   string `json:"host"`
+	Port   int    `json:"port"`
+	Passwd string `json:"passwd"`
+	DB     int    `json:"db"`
+}
+
 var conf *Config
 var once sync.Once
 
@@ -44,4 +53,8 @@ func (c *Config) GetMysqlConf() string {
 	}
 
 	return fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local&timeout=%s", mysqlconf.User, mysqlconf.Passwd, mysqlconf.Host, mysqlconf.Port, mysqlconf.DB, mysqlconf.Timeout)
+}
+
+func (c *Config) GetRedisConf() *redis {
+	return conf.Redis
 }

@@ -11,6 +11,7 @@ import (
 	wsrv "nwd/service/waiting"
 	"nwd/shared/database"
 	"nwd/shared/log"
+	rds "nwd/shared/redis"
 
 	"github.com/BurntSushi/toml"
 )
@@ -29,6 +30,7 @@ func Init() {
 		waitingInit()
 		userInit()
 		logInit()
+		rds.Init(conf.Redis.Host, conf.Redis.Passwd, conf.Redis.Port, conf.Redis.DB)
 	})
 }
 
@@ -47,7 +49,6 @@ func userInit() {
 }
 
 func logInit() {
-	fmt.Println("xxxxxx", conf.Server, "xxxxxx")
 	log.GetLog().WithFile("api", conf.Server.LogFile, conf.Server.LogRotate)
 	log.GetLog().Info("", "Service start! NR ")
 }
