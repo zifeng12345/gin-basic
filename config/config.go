@@ -6,7 +6,8 @@ import (
 )
 
 type Config struct {
-	Mysql *mysql `json:"mysql"`
+	Mysql  *mysql  `json:"mysql"`
+	Server *server `json:"server"`
 }
 
 type IConfig interface {
@@ -20,6 +21,13 @@ type mysql struct {
 	Passwd  string `json:"passwd"`
 	DB      string `json:"db"`
 	Timeout string `json:"timeout"`
+}
+
+type server struct {
+	Server    string `json:"server"`
+	Env       string `json:"env"`
+	LogFile   string `json:"logFile"`
+	LogRotate int    `json:"logRotate"`
 }
 
 var conf *Config

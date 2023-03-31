@@ -3,14 +3,14 @@ package config
 import (
 	"fmt"
 
+	uctl "nwd/controller/users"
 	wctl "nwd/controller/waiting"
+	urep "nwd/repository/users"
 	wrep "nwd/repository/waiting"
+	usrv "nwd/service/users"
 	wsrv "nwd/service/waiting"
 	"nwd/shared/database"
-
-	uctl "nwd/controller/users"
-	urep "nwd/repository/users"
-	usrv "nwd/service/users"
+	"nwd/shared/log"
 
 	"github.com/BurntSushi/toml"
 )
@@ -28,6 +28,7 @@ func Init() {
 
 		waitingInit()
 		userInit()
+		logInit()
 	})
 }
 
@@ -43,4 +44,10 @@ func userInit() {
 	usrv.Init(urep)
 	usrv := usrv.GetUsers()
 	uctl.Init(usrv)
+}
+
+func logInit() {
+	fmt.Println("xxxxxx", conf.Server, "xxxxxx")
+	log.GetLog().WithFile("api", conf.Server.LogFile, conf.Server.LogRotate)
+	log.GetLog().Info("", "Service start! NR ")
 }

@@ -5,3 +5,9 @@ user = "team"
 passwd = "team"
 db = "gin"
 timeout = "10s"
+
+[server]
+port = 8082
+env = "development"
+logFile = "../logs/logs"
+logRotate = 7
