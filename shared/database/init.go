@@ -50,3 +50,8 @@ func (c Connection) RollbackOnException() {
 func (c Connection) CommitTransaction() {
 	c.db.Commit()
 }
+
+func Stop() {
+	db, _ := conn.db.DB()
+	db.Close()
+}

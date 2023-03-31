@@ -55,3 +55,4 @@ Listening port is 8000
 - Gorm
 - Gin
 - JWT
+- Graceful Exit

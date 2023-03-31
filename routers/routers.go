@@ -35,5 +35,7 @@ func Routers() {
 		})
 	}
 
-	r.Run(":8000")
+	go func() {
+		r.Run(":8000")
+	}()
 }
