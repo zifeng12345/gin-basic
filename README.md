@@ -54,3 +54,4 @@ Listening port is 8000
 - RESTful API
 - Gorm
 - Gin
+- JWT
