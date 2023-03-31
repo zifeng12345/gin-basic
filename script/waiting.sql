@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `waiting_lists`;
+
 CREATE TABLE `waiting_lists` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,

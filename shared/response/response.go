@@ -2,10 +2,9 @@ package response
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
-
-	"github.com/fatih/structs"
 )
 
 type responseCont struct {
@@ -24,7 +23,10 @@ func Response(w http.ResponseWriter, code int, message string, data interface{})
 	}
 
 	w.Header().Add("Content-Type", "application/json")
-	resData := structs.Map(&res)
+	resd, err := json.Marshal(&res)
+	if err != nil {
+		fmt.Printf("Response err : %v", err)
+	}
 
-	_ = json.NewEncoder(w).Encode(resData)
+	w.Write(resd)
 }
